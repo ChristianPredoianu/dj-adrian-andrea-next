@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import ProfileImg from '@/app/assets/images/adrian-andrea.png';
 import CtaBtn from '@/app/components/buttons/CtaBtn';
-import SingleTrackPlayer from '@/app/components/audio/SingleTrackPlayer';
+import SingleTrackPlayer from '../audio/SingleTrackPlayer';
 
 export default function HeroSection() {
   return (
