@@ -7,6 +7,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        'red-from-gradient': '#C0163F',
+        'red-via-gradient': 'rgba(201, 71, 103, 0.760417)',
+        'red-to-gradient': 'rgba(228, 228, 228, 0)',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
@@ -15,4 +20,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};
