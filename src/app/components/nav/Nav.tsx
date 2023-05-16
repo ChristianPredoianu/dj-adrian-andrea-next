@@ -39,7 +39,9 @@ export default function Nav() {
               ))}
             </ul>
           </div>
-          <SocialMediaIcons />
+          <div className='hidden lg:flex'>
+            <SocialMediaIcons />
+          </div>
         </nav>
       </header>
     </>
