@@ -1,9 +1,22 @@
-'use client';
+import { forwardRef } from 'react';
+import classes from '@/app/components/audio/AudioProgress.module.css';
 
-export default function AudioProgress({ progress, progressBarRef }) {
-  return (
-    <div className='relative h-2 w-3/6 bg-red-500' ref={progressBarRef}>
-      <div className='absolute h-2 bg-white' style={{ width: progress + '%' }}></div>
-    </div>
-  );
+interface AudioProgressProps {
+  onChange: () => void;
 }
+
+export default forwardRef<HTMLInputElement, AudioProgressProps>(function AudioProgress(
+  { onChange },
+  ref
+) {
+  return (
+    <input
+      type='range'
+      defaultValue={0}
+      ref={ref}
+      onChange={onChange}
+      className={classes.progressBar}
+      step={0.1}
+    />
+  );
+});
