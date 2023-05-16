@@ -7,7 +7,6 @@ export default function AboutSection() {
     <section className='bg-zinc-300'>
       <div className='container mx-auto px-4 py-16 md:py-24'>
         <h2 className='text-3xl text-slate-800'>About me</h2>
-
         <div className='mt-10 flex flex-col items-center gap-6 lg:flex-row lg:justify-between lg:gap-20'>
           <div className=' w-full shadow-2xl lg:w-3/5 xl:w-auto'>
             <Image src={MixingImg} className='w-full' alt='dj mixing' />
@@ -23,7 +22,7 @@ export default function AboutSection() {
             sounds and rhythms to create a vibe that's all my own. Whether I'm playing to
             a packed dancefloor or setting the mood for a more intimate setting, I'm
             always focused on creating an atmosphere that's fun, engaging, and
-            unforgettable. But being a DJ isn't just about playing music – it's about
+            unforgettable. But being a DJ isn't just about playing music - it's about
             connecting with people and creating a sense of community. That's why I always
             make an effort to engage with my audience and create a sense of shared
             experience. Whether it's through call-and-response chants, shoutouts, or just
