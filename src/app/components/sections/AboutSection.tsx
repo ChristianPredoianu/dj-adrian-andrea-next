@@ -5,7 +5,7 @@ import SocialMediaIcons from '@/app/components/ui/SocialMediaIcons';
 export default function AboutSection() {
   return (
     <section className='bg-zinc-300'>
-      <div className='container mx-auto px-4 py-16 md:py-24'>
+      <div className='container mx-auto px-4 py-16 md:py-32'>
         <h2 className='text-3xl text-slate-800'>About me</h2>
         <div className='mt-10 flex flex-col items-center gap-6 lg:flex-row lg:justify-between lg:gap-20'>
           <div className=' w-full shadow-2xl lg:w-3/5 xl:w-auto'>
