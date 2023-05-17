@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
-import classes from '@/app/components/react-soundcloud/SOundCloudReact.module.css';
+import classes from '@/app/components/react-soundcloud/SoundCloudReact.module.css';
 
 export default function SoundCloudReact() {
   const [isLoaded, setIsLoaded] = useState(false);
