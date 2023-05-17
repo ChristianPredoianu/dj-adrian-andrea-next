@@ -25,7 +25,12 @@ export default function HeroSection() {
           </div>
           <div>
             <p className='text-xs font-bold'>View All Tracks</p>
-            <SingleTrackPlayer />
+            <SingleTrackPlayer
+              trackSrc='https://docs.google.com/uc?export=download&id=1DKVRyOZTK49whnQKBdM-12cMTj7BcLv3'
+              trackName='Bunker (Original Mix)'
+              artist={'M5'}
+              isTracksSection={false}
+            />
           </div>
         </section>
         <div className='absolute bottom-0 right-0 z-50 w-2/5 md:w-3/12'>
