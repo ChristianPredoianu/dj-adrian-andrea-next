@@ -4,8 +4,25 @@ import { useRef, useState, useEffect, useCallback } from 'react';
 import AudioControls from '@/app/components/audio/AudioControls';
 import AudioTime from '@/app/components/audio/AudioTime';
 import AudioProgress from '@/app/components/audio/AudioProgress';
+import classNames from 'classnames';
 
-export default function SingleTrackPlayer() {
+interface SingleTrackPlayerProps {
+  trackSrc: string;
+  trackName: string;
+  artist: string;
+  isTracksSection: boolean;
+  activePlayerHandler?: (id: number) => void;
+  playing: number;
+}
+
+export default function SingleTrackPlayer({
+  trackSrc,
+  trackName,
+  artist,
+  isTracksSection,
+  activePlayerHandler,
+  playing,
+}: SingleTrackPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -34,8 +51,9 @@ export default function SingleTrackPlayer() {
 
   const handlePlay = useCallback(() => {
     if (audioRef.current) audioRef.current.play();
+    activePlayerHandler(playing);
     animationRef.current = requestAnimationFrame(whilePlaying);
-  }, [whilePlaying]);
+  }, [whilePlaying, activePlayerHandler, playing]);
 
   function handlePause() {
     if (audioRef.current) audioRef.current.pause();
@@ -49,17 +67,17 @@ export default function SingleTrackPlayer() {
     }
   }
 
-  useEffect(() => {
-    isPlaying ? handlePlay() : handlePause();
-  }, [isPlaying, handlePlay]);
-
-  useEffect(() => {
+  function handleOnLoadedMetadata() {
     if (audioRef.current && progressBarRef.current) {
       const seconds = Math.floor(audioRef.current.duration);
       setDuration(seconds);
       progressBarRef.current.max = seconds.toString();
     }
-  }, [audioRef?.current?.onloadedmetadata, audioRef?.current?.readyState]);
+  }
+
+  useEffect(() => {
+    isPlaying ? handlePlay() : handlePause();
+  }, [isPlaying, handlePlay]);
 
   useEffect(() => {
     if (currentTime === duration) {
@@ -75,11 +93,21 @@ export default function SingleTrackPlayer() {
   return (
     <>
       <div className='mt-4 flex items-center'>
-        <audio src='/avex.mp3' id='audio' ref={audioRef} />
+        <audio
+          src={trackSrc}
+          id='audio'
+          ref={audioRef}
+          onLoadedMetadata={handleOnLoadedMetadata}
+        />
         <AudioControls isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
-        <p className='ml-4 text-xs'>Bunker (Original Mix) -M5</p>
+        {!isTracksSection && <p className='ml-4 text-xs'>{`${trackName} -${artist}`}</p>}
       </div>
-      <div className='mt-4 w-4/5  sm:w-3/5 md:w-2/5 lg:w-1/4'>
+      <div
+        className={classNames('mt-4 ', {
+          'w-full': isTracksSection,
+          'w-4/5 sm:w-3/5 md:w-2/5 lg:w-1/4': !isTracksSection,
+        })}
+      >
         <AudioProgress ref={progressBarRef} onChange={handleChangeRange} />
       </div>
 
