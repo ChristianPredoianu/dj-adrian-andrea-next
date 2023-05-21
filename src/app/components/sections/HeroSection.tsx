@@ -24,6 +24,7 @@ export default function HeroSection() {
             <CtaBtn />
           </div>
           <div>
+            {/* fix to play one track at a time */}
             <p className='text-xs font-bold'>View All Tracks</p>
             <SingleTrackPlayer
               trackSrc='https://docs.google.com/uc?export=download&id=1DKVRyOZTK49whnQKBdM-12cMTj7BcLv3'
