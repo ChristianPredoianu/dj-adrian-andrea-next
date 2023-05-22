@@ -1,15 +1,27 @@
-'use client';
-
-import { useState, useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import Image from 'next/image';
 import SingleTrackPlayer from '@/app/components/audio/SingleTrackPlayer';
 
-export default function TrackCard({ track }) {
-  const [activePlaying, setActivePlaying] = useState(0);
+interface TrackCardProps {
+  track: {
+    artist: string;
+    img: string;
+    url: string;
+    track: string;
+    alt: string;
+  };
+  activePlayerHandler: () => void;
+  playing: boolean;
+}
 
-  const activePlayerHandler = useCallback((id: number) => {
-    setActivePlaying(id);
-  }, []);
+export default function TrackCard({
+  track,
+  activePlayerHandler,
+  playing,
+}: TrackCardProps) {
+  const handlePlay = useCallback(() => {
+    activePlayerHandler();
+  }, [activePlayerHandler]);
 
   return (
     <article className='flex w-4/5 flex-col sm:w-3/5 lg:w-2/5 2xl:flex-row'>
@@ -25,8 +37,8 @@ export default function TrackCard({ track }) {
             trackName={track.track}
             artist={track.artist}
             isTracksSection={true}
-            activePlayerHandler={activePlayerHandler}
-            playing={activePlaying === track.id}
+            onPlay={handlePlay}
+            playing={playing}
           />
         </div>
       </div>
