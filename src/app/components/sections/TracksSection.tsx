@@ -1,10 +1,24 @@
+'use client';
+
+import { useState, useEffect, useCallback } from 'react';
 import TrackCard from '@/app/components/cards/TrackCard';
 import { tracksArr } from '@/app/utils/tracks';
 
-console.log(tracksArr[0].img);
-
 export default function TracksSections() {
-  const tracks = tracksArr.map((track) => <TrackCard key={track.id} track={track} />);
+  const [isActivePlaying, setIsActivePlaying] = useState(0);
+
+  const activePlayerHandler = useCallback((id: number) => {
+    setIsActivePlaying(id);
+  }, []);
+
+  const tracks = tracksArr.map((track) => (
+    <TrackCard
+      key={track.id}
+      track={track}
+      activePlayerHandler={() => activePlayerHandler(track.id)}
+      playing={isActivePlaying === track.id}
+    />
+  ));
 
   return (
     <section className='bg-zinc-100  text-slate-200'>
