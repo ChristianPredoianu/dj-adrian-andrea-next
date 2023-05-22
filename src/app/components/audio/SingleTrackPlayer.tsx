@@ -11,8 +11,8 @@ interface SingleTrackPlayerProps {
   trackName: string;
   artist: string;
   isTracksSection: boolean;
-  activePlayerHandler?: (id: number) => void;
-  playing: number;
+  playing?: boolean;
+  onPlay?: () => void;
 }
 
 export default function SingleTrackPlayer({
@@ -20,8 +20,8 @@ export default function SingleTrackPlayer({
   trackName,
   artist,
   isTracksSection,
-  activePlayerHandler,
   playing,
+  onPlay,
 }: SingleTrackPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -50,10 +50,18 @@ export default function SingleTrackPlayer({
   }, [changePlayerCurrentTime]);
 
   const handlePlay = useCallback(() => {
-    if (audioRef.current) audioRef.current.play();
-    activePlayerHandler(playing);
+    if (audioRef.current) {
+      const isPlaying =
+        audioRef.current.currentTime &&
+        !audioRef.current.paused &&
+        audioRef.current.ended &&
+        audioRef.current.readyState > audioRef.current.HAVE_CURRENT_DATA;
+      if (!isPlaying) audioRef.current.play();
+      if (isTracksSection && onPlay) onPlay();
+    }
+
     animationRef.current = requestAnimationFrame(whilePlaying);
-  }, [whilePlaying, activePlayerHandler, playing]);
+  }, [whilePlaying, onPlay, isTracksSection]);
 
   function handlePause() {
     if (audioRef.current) audioRef.current.pause();
@@ -80,15 +88,16 @@ export default function SingleTrackPlayer({
   }, [isPlaying, handlePlay]);
 
   useEffect(() => {
-    if (currentTime === duration) {
+    if (currentTime === duration || !playing) {
       setIsPlaying(false);
+
       if (audioRef.current && progressBarRef.current) {
         audioRef.current.currentTime = 0;
         progressBarRef.current.value = '0';
         setCurrentTime(0);
       }
     }
-  }, [currentTime, duration]);
+  }, [currentTime, duration, playing]);
 
   return (
     <>
