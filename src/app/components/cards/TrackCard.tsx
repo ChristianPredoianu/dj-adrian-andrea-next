@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import Image from 'next/image';
 import SingleTrackPlayer from '@/app/components/audio/SingleTrackPlayer';
 
@@ -13,13 +14,15 @@ interface TrackCardProps {
   isActive: boolean;
 }
 
-export default function TrackCard({
-  track,
-  isActive,
-  activePlayerHandler,
-}: TrackCardProps) {
+export default forwardRef<HTMLElement, TrackCardProps>(function TrackCard(
+  { track, isActive, activePlayerHandler },
+  ref
+) {
   return (
-    <article className='flex w-4/5 flex-col sm:w-3/5 lg:w-2/5 2xl:flex-row'>
+    <article
+      className='card flex w-4/5 flex-col sm:w-3/5 lg:w-2/5 2xl:flex-row'
+      ref={ref}
+    >
       <div className='relative h-80 w-full object-cover '>
         <Image src={track.img} fill priority alt={track.alt} className='object-cover' />
       </div>
@@ -37,4 +40,4 @@ export default function TrackCard({
       </div>
     </article>
   );
-}
+});
