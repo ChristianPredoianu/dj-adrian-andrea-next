@@ -7,21 +7,21 @@ import AudioProgress from '@/app/components/audio/AudioProgress';
 import classNames from 'classnames';
 
 interface SingleTrackPlayerProps {
-  trackSrc: string;
-  trackName: string;
-  artist: string;
+  track: {
+    url: string;
+    track: string;
+    artist: string;
+  };
   isTracksSection: boolean;
-  playing?: boolean;
-  onPlay?: () => void;
+  isActive: boolean;
+  activePlayerHandler: () => void;
 }
 
 export default function SingleTrackPlayer({
-  trackSrc,
-  trackName,
-  artist,
+  track,
   isTracksSection,
-  playing,
-  onPlay,
+  isActive,
+  activePlayerHandler,
 }: SingleTrackPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -51,17 +51,12 @@ export default function SingleTrackPlayer({
 
   const handlePlay = useCallback(() => {
     if (audioRef.current) {
-      const isPlaying =
-        audioRef.current.currentTime &&
-        !audioRef.current.paused &&
-        audioRef.current.ended &&
-        audioRef.current.readyState > audioRef.current.HAVE_CURRENT_DATA;
-      if (!isPlaying) audioRef.current.play();
-      if (isTracksSection && onPlay) onPlay();
+      audioRef.current.play();
+      activePlayerHandler();
     }
 
     animationRef.current = requestAnimationFrame(whilePlaying);
-  }, [whilePlaying, onPlay, isTracksSection]);
+  }, []);
 
   function handlePause() {
     if (audioRef.current) audioRef.current.pause();
@@ -84,11 +79,15 @@ export default function SingleTrackPlayer({
   }
 
   useEffect(() => {
+    isActive ? setIsPlaying(true) : setIsPlaying(false);
+  }, [isActive]);
+
+  useEffect(() => {
     isPlaying ? handlePlay() : handlePause();
   }, [isPlaying, handlePlay]);
 
   useEffect(() => {
-    if (currentTime === duration || !playing) {
+    if (currentTime === duration) {
       setIsPlaying(false);
 
       if (audioRef.current && progressBarRef.current) {
@@ -97,19 +96,23 @@ export default function SingleTrackPlayer({
         setCurrentTime(0);
       }
     }
-  }, [currentTime, duration, playing]);
+  }, [currentTime, duration]);
 
   return (
     <>
       <div className='mt-4 flex items-center'>
-        <audio
-          src={trackSrc}
-          id='audio'
-          ref={audioRef}
-          onLoadedMetadata={handleOnLoadedMetadata}
-        />
+        {track && (
+          <audio
+            src={track.url}
+            id='audio'
+            ref={audioRef}
+            onLoadedMetadata={handleOnLoadedMetadata}
+          />
+        )}
         <AudioControls isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
-        {!isTracksSection && <p className='ml-4 text-xs'>{`${trackName} -${artist}`}</p>}
+        {!isTracksSection && track && (
+          <p className='ml-4 text-xs'>{`${track.track} -${track.artist}`}</p>
+        )}
       </div>
       <div
         className={classNames('mt-4 ', {
