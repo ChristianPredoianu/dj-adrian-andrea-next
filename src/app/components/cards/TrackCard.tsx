@@ -1,4 +1,3 @@
-import { useCallback, useEffect } from 'react';
 import Image from 'next/image';
 import SingleTrackPlayer from '@/app/components/audio/SingleTrackPlayer';
 
@@ -11,34 +10,28 @@ interface TrackCardProps {
     alt: string;
   };
   activePlayerHandler: () => void;
-  playing: boolean;
+  isActive: boolean;
 }
 
 export default function TrackCard({
   track,
+  isActive,
   activePlayerHandler,
-  playing,
 }: TrackCardProps) {
-  const handlePlay = useCallback(() => {
-    activePlayerHandler();
-  }, [activePlayerHandler]);
-
   return (
     <article className='flex w-4/5 flex-col sm:w-3/5 lg:w-2/5 2xl:flex-row'>
       <div className='relative h-80 w-full object-cover '>
         <Image src={track.img} fill priority alt={track.alt} className='object-cover' />
       </div>
       <div className='flex w-full flex-col items-center justify-center bg-slate-950 py-10 shadow-2xl'>
-        <h3 className=''>{track.artist}</h3>
-        <h4>{track.track}</h4>
+        <h3 className='text-center text-xl'>{track.artist}</h3>
+        <h4 className='mt-2 text-gray-300'>{track.track}</h4>
         <div className='mt-10 flex flex-1 flex-col items-center'>
           <SingleTrackPlayer
-            trackSrc={track.url}
-            trackName={track.track}
-            artist={track.artist}
+            track={track}
             isTracksSection={true}
-            onPlay={handlePlay}
-            playing={playing}
+            activePlayerHandler={() => activePlayerHandler()}
+            isActive={isActive}
           />
         </div>
       </div>
