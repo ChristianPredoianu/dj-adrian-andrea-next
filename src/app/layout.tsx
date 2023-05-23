@@ -1,3 +1,4 @@
+import { PlayerContextProvider } from '@/app/store/PlayerContext';
 import './globals.css';
 import { Poppins } from 'next/font/google';
 import Nav from './components/nav/Nav';
@@ -20,8 +21,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang='en'>
       <body className={poppins.className}>
-        <Nav></Nav>
-        {children}
+        <PlayerContextProvider>
+          <Nav />
+          {children}
+        </PlayerContextProvider>
       </body>
     </html>
   );
