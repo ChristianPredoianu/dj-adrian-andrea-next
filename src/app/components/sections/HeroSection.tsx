@@ -1,14 +1,20 @@
 'use client';
 
-import { useState } from 'react';
 import Image from 'next/image';
+import { useContext, useEffect } from 'react';
+import { PlayerContext } from '@/app/store/PlayerContext';
 import ProfileImg from '@/app/assets/images/adrian-andrea.png';
 import CtaBtn from '@/app/components/buttons/CtaBtn';
 import SingleTrackPlayer from '@/app/components/audio/SingleTrackPlayer';
 
 export default function HeroSection() {
-  const [isHeroPlaying, setIsHeroPlaying] = useState(false);
+  const { activePlayerId, setActivePlayerId } = useContext(PlayerContext);
 
+  const heroTrack = {
+    url: 'https://docs.google.com/uc?export=download&id=1DKVRyOZTK49whnQKBdM-12cMTj7BcLv3',
+    track: 'Bunker (Original Mix)',
+    artist: 'M5',
+  };
   return (
     <>
       <div
@@ -31,10 +37,11 @@ export default function HeroSection() {
           <div>
             <p className='text-xs font-bold'>View All Tracks</p>
             <SingleTrackPlayer
-              trackSrc='https://docs.google.com/uc?export=download&id=1DKVRyOZTK49whnQKBdM-12cMTj7BcLv3'
-              trackName='Bunker (Original Mix)'
-              artist={'M5'}
+              track={heroTrack}
               isTracksSection={false}
+              //0 because when mapping trackCard first track has an id of 1
+              activePlayerHandler={() => setActivePlayerId(0)}
+              isActive={activePlayerId === 0}
             />
           </div>
         </section>
