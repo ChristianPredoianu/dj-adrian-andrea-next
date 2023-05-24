@@ -4,6 +4,7 @@ import { useState } from 'react';
 import NavLogo from '@/app/components/nav/NavLogo';
 import Hamburger from '@/app/components/nav/Hamburger';
 import NavLink from '@/app/components/nav/NavLink';
+import DarkModeToogler from '@/app/components/nav/DarkModeToggler';
 import SocialMediaIcons from '@/app/components/ui/SocialMediaIcons';
 
 const navLinksArr = [{ name: 'Home' }, { name: 'About' }, { name: 'Tracks' }];
@@ -28,6 +29,7 @@ export default function Nav() {
       <header className='container absolute left-0 right-0 z-50 m-auto w-full px-4 py-4 lg:py-0'>
         <nav className='relative flex flex-wrap items-center justify-between'>
           <NavLogo />
+          <DarkModeToogler />
           <Hamburger isNavbarOpen={isNavbarOpen} onToggleNavbar={toggleNavbarHandler} />
           <div
             className={`items-center  lg:flex
@@ -37,6 +39,7 @@ export default function Nav() {
               {navLinks}
             </ul>
           </div>
+
           <div className='hidden lg:flex'>
             <SocialMediaIcons />
           </div>
