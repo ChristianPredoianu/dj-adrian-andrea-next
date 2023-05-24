@@ -12,22 +12,22 @@ export default function TracksSections() {
 
   gsap.registerPlugin(ScrollTrigger);
 
-  const main = useRef<HTMLDivElement>(null);
-  const card = useRef<HTMLElement>(null);
+  const cardContainerRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      let boxes = gsap.utils.selector(main);
+      let cards = gsap.utils.selector(cardContainerRef);
+
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: main.current,
+          trigger: cardContainerRef.current,
           scrub: 1,
           start: '0 80%',
           end: 'bottom 100%',
-          markers: true,
         },
       });
-      tl.from(boxes('.card'), {
+
+      tl.from(cards('.card'), {
         stagger: 3,
         duration: 3,
         opacity: 0.5,
@@ -35,8 +35,8 @@ export default function TracksSections() {
         scale: 0.9,
         ease: 'power0',
       });
-    }, main); // <- Scope!
-    return () => ctx.revert(); // <- Cleanup!
+    }, cardContainerRef);
+    return () => ctx.revert();
   }, []);
 
   const tracks = tracksArr.map((track) => (
@@ -49,12 +49,12 @@ export default function TracksSections() {
   ));
 
   return (
-    <section className='bg-zinc-100  text-slate-200'>
+    <section className='bg-zinc-100 text-slate-200'>
       <div className='container mx-auto px-4 py-16 md:py-32'>
         <h3 className='mb-10 text-3xl text-slate-800'>Tracks</h3>
         <div
           className='flex flex-wrap items-center justify-center gap-10 md:gap-20 lg:justify-between'
-          ref={main}
+          ref={cardContainerRef}
         >
           {tracks}
         </div>
