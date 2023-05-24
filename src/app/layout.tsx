@@ -1,8 +1,9 @@
+'use client';
+
 import { PlayerContextProvider } from '@/app/store/PlayerContext';
 import './globals.css';
 import { Poppins } from 'next/font/google';
 import Nav from './components/nav/Nav';
-
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
 config.autoAddCss = false;
