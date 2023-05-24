@@ -49,7 +49,7 @@ export default function TracksSections() {
   ));
 
   return (
-    <section className='bg-zinc-100 text-slate-200'>
+    <section className='bg-zinc-100 text-slate-200 dark:bg-slate-400'>
       <div className='container mx-auto px-4 py-16 md:py-32'>
         <h3 className='mb-10 text-3xl text-slate-800'>Tracks</h3>
         <div
