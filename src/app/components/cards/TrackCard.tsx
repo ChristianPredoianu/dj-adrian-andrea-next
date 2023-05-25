@@ -20,20 +20,26 @@ export default forwardRef<HTMLElement, TrackCardProps>(function TrackCard(
 ) {
   return (
     <article
-      className='card flex w-4/5 flex-col sm:w-3/5 lg:w-2/5 2xl:flex-row'
+      className='card flex w-4/5 flex-col bg-slate-950 sm:w-3/5 lg:w-2/5 2xl:flex-row'
       ref={ref}
     >
-      <div className='relative h-80 w-full object-cover '>
-        <Image src={track.img} fill priority alt={track.alt} className='object-cover' />
+      <div className='relative h-80 w-full object-cover 2xl:h-auto '>
+        <Image
+          src={track.img}
+          fill
+          priority
+          alt={track.alt}
+          className='relative object-cover'
+        />
       </div>
-      <div className='flex w-full flex-col items-center justify-center bg-slate-950 py-10 shadow-2xl'>
+      <div className='items-center flex w-full flex-col bg-slate-950 py-10 shadow-2xl'>
         <h3 className='text-center text-xl'>{track.artist}</h3>
         <h4 className='mt-2 text-gray-300'>{track.track}</h4>
-        <div className='mt-10 flex flex-1 flex-col items-center'>
+        <div className='items-center mt-10 flex w-full flex-col justify-center'>
           <SingleTrackPlayer
             track={track}
             isTracksSection={true}
-            activePlayerHandler={() => activePlayerHandler()}
+            activePlayerHandler={activePlayerHandler}
             isActive={isActive}
           />
         </div>
