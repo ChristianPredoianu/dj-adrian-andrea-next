@@ -1,5 +1,3 @@
-import { StaticImageData } from 'next/image';
-
 interface ITracksArr {
   id: number;
   artist: string;
@@ -13,7 +11,7 @@ export const tracksArr: ITracksArr[] = [
     id: 1,
     artist: 'Ddp',
     track: 'Summer Nights',
-    url: 'https://docs.google.com/uc?export=download&id=1T3LQAdFV8ggElAm_VUAiNVjp1GHD8z8p',
+    url: '/avex.mp3',
     img: '/dj1.jpg',
     alt: 'dj mixing croud watching',
   },
@@ -21,7 +19,7 @@ export const tracksArr: ITracksArr[] = [
     id: 2,
     artist: 'Dezza & EMME ',
     track: 'Getaway',
-    url: 'https://docs.google.com/uc?export=download&id=1Iu0kCQMRJwmCw8JEgpRtamtxbTA-VkRm',
+    url: '/avex.mp3',
     img: '/dj2.jpg',
     alt: 'dj mixing in the club',
   },
