@@ -6,7 +6,11 @@ interface AudioControlProps {
   setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function AudioControls({ isPlaying, setIsPlaying }: AudioControlProps) {
+export default function AudioControls({
+  isPlaying,
+  handlePlay,
+  handlePause,
+}: AudioControlProps) {
   let playPauseControls;
 
   if (!isPlaying) {
@@ -14,7 +18,7 @@ export default function AudioControls({ isPlaying, setIsPlaying }: AudioControlP
       <FontAwesomeIcon
         icon={faPlayCircle}
         className='cursor-pointer text-4xl text-red-600'
-        onClick={() => setIsPlaying(true)}
+        onClick={handlePlay}
       />
     );
   } else {
@@ -22,7 +26,7 @@ export default function AudioControls({ isPlaying, setIsPlaying }: AudioControlP
       <FontAwesomeIcon
         icon={faPauseCircle}
         className='cursor-pointer text-4xl text-red-600'
-        onClick={() => setIsPlaying(false)}
+        onClick={handlePause}
       />
     );
   }
