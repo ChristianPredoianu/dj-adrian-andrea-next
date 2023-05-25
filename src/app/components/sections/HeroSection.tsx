@@ -31,14 +31,14 @@ export default function HeroSection() {
   }, []);
 
   const heroTrack = {
-    url: 'https://docs.google.com/uc?export=download&id=1DKVRyOZTK49whnQKBdM-12cMTj7BcLv3',
+    url: '/avex.mp3',
     track: 'Bunker (Original Mix)',
     artist: 'M5',
   };
   return (
     <>
       <div
-        className={`relative flex min-h-screen items-center bg-[url(/hero-background.jpg)] bg-cover bg-center bg-no-repeat `}
+        className={`items-center relative flex min-h-screen bg-[url(/hero-background.jpg)] bg-cover bg-center bg-no-repeat `}
       >
         <div className='absolute inset-0 min-h-screen bg-black opacity-70 '></div>
         <section className='container relative mx-auto mt-20 flex flex-col gap-10 px-4 pb-10 text-slate-200 md:gap-24 md:pb-0'>
