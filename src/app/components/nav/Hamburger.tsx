@@ -6,13 +6,13 @@ interface HamburgerProps {
 }
 
 export default function Hamburger({ isNavbarOpen, onToggleNavbar }: HamburgerProps) {
-  const genericHamburgerLine = `h-1 w-10 my-1 rounded-full transition ease transform duration-300 bg-red-500`;
+  const genericHamburgerLine = `h-1 w-10 my-1 rounded-full transition ease transform duration-300 bg-red-800`;
 
   return (
     <>
       <button
         className={classNames(
-          'group z-50 flex h-12 w-12 flex-col items-center justify-center lg:hidden',
+          'group z-50 flex h-10 w-10 flex-col items-center justify-center lg:hidden',
           { 'fixed right-4 top-6': isNavbarOpen }
         )}
         type='button'
