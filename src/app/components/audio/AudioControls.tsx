@@ -1,13 +1,17 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlayCircle, faPauseCircle } from '@fortawesome/free-solid-svg-icons';
+import classNames from 'classnames';
 
 interface AudioControlProps {
   isPlaying: boolean;
-  setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
+  isTracksSection: boolean;
+  handlePlay: () => void;
+  handlePause: () => void;
 }
 
 export default function AudioControls({
   isPlaying,
+  isTracksSection,
   handlePlay,
   handlePause,
 }: AudioControlProps) {
@@ -30,5 +34,13 @@ export default function AudioControls({
       />
     );
   }
-  return <>{playPauseControls}</>;
+  return (
+    <div
+      className={classNames('mb-10', {
+        'flex justify-center': isTracksSection,
+      })}
+    >
+      {playPauseControls}
+    </div>
+  );
 }
