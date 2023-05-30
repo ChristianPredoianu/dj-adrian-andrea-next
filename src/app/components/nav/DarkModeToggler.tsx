@@ -8,7 +8,8 @@ export default function DarkModeToggler() {
   };
 
   return (
-    <div className='items-center  flex '>
+    <div className='flex flex-col items-center gap-2 sm:flex-row'>
+      <span className='mr-2 text-xs text-slate-200'>Dark Mode</span>
       <input
         type='checkbox'
         id='darkModeToggle'
@@ -18,13 +19,13 @@ export default function DarkModeToggler() {
       />
       <label
         htmlFor='darkModeToggle'
-        className='items-center flex cursor-pointer select-none'
+        className='flex cursor-pointer select-none items-center'
       >
-        <div className='items-center flex flex-col'>
-          <div className='h-6 w-12 rounded-full bg-gray-300'>
+        <div className='flex flex-col items-center'>
+          <div className='h-6 w-12 rounded-full bg-slate-300'>
             <div
               className={`h-6 w-6 rounded-full transition-transform duration-300 ${
-                isDarkMode ? 'translate-x-6 transform  bg-red-400' : 'bg-white'
+                isDarkMode ? 'translate-x-6 transform   bg-red-800' : 'bg-white'
               }`}
             ></div>
           </div>
