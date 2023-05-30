@@ -1,48 +1,71 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
+
 import WaveSurfer from 'wavesurfer.js';
 import AudioControls from '@/app/components/audio/AudioControls';
 interface AudioVisualizerProps {
   track: string;
   isPlaying: boolean;
-  handlePlay: () => void;
-  handlePause: () => void;
+  isTracksSection: boolean;
+  activePlayerHandler: () => void;
   setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function AudioVisualizer({
   track,
-  handlePlay,
-  handlePause,
   isPlaying,
+  isTracksSection,
   setIsPlaying,
+  activePlayerHandler,
 }: AudioVisualizerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const waveSurferRef = useRef<WaveSurfer | null>(null);
+  const gradientRef = useRef<CanvasGradient | null>(null);
 
-  function onHandlePlay() {
-    handlePlay();
-    if (setIsPlaying) setIsPlaying(true);
-    if (waveSurferRef.current) waveSurferRef.current.play();
+  useEffect(() => {
+    const ctx = document.createElement('canvas').getContext('2d');
+
+    if (ctx) {
+      let gradient: CanvasGradient;
+
+      gradient = ctx.createLinearGradient(0, 0, 0, 150);
+      gradient.addColorStop(0, 'rgb(186, 181, 181)');
+      gradient.addColorStop(0.7, 'rgb(242, 5, 5)');
+      gradient.addColorStop(1, 'rgb(242, 5, 5)');
+
+      gradientRef.current = gradient;
+    }
+  }, []);
+
+  function handlePlay() {
+    activePlayerHandler();
+    setIsPlaying(true);
   }
 
-  function onHandlePause() {
-    handlePause();
-    if (setIsPlaying) setIsPlaying(false);
-    if (waveSurferRef.current) waveSurferRef.current.pause();
+  function handlePause() {
+    setIsPlaying(false);
   }
 
   useEffect(() => {
-    if (containerRef.current) {
+    if (isPlaying && waveSurferRef.current) {
+      waveSurferRef.current.play();
+    } else if (!isPlaying && waveSurferRef.current) {
+      waveSurferRef.current.pause();
+    }
+  }, [isPlaying]);
+
+  useEffect(() => {
+    if (containerRef.current && gradientRef.current) {
       const waveSurfer = WaveSurfer.create({
         container: containerRef.current,
         backend: 'WebAudio',
         height: 80,
-        barWidth: 1,
-        progressColor: '#2D5BFF',
+        barWidth: 3,
+        barGap: 3,
+        progressColor: '#a6a9ad',
         responsive: true,
-        waveColor: '#EFEFEF',
+        waveColor: gradientRef.current,
         cursorColor: 'transparent',
       });
 
@@ -58,14 +81,15 @@ export default function AudioVisualizer({
         waveSurfer.destroy();
       };
     }
-  }, [track]);
+  }, [track, gradientRef]);
 
   return (
     <>
       <AudioControls
         isPlaying={isPlaying}
-        handlePlay={onHandlePlay}
-        handlePause={onHandlePause}
+        isTracksSection={isTracksSection}
+        handlePlay={handlePlay}
+        handlePause={handlePause}
       />
       <div ref={containerRef}></div>
     </>
