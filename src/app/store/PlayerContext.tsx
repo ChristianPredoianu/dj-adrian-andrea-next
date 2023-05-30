@@ -24,10 +24,6 @@ export const PlayerContextProvider: React.FC<PlayerContextProviderProps> = ({
     setActivePlayerId(id);
   }, []);
 
-  useEffect(() => {
-    console.log(activePlayerId);
-  });
-
   const contextValue: PlayerContextProps = {
     activePlayerId,
     setActivePlayerId: handleSetActivePlayerId,
