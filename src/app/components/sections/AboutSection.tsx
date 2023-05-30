@@ -1,18 +1,60 @@
+'use client';
+
+import { useLayoutEffect, useRef } from 'react';
 import Image from 'next/image';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import MixingImg from '@/app/assets/images/mixing.jpg';
 import SocialMediaIcons from '@/app/components/ui/SocialMediaIcons';
 
 export default function AboutSection() {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const aboutSectionRef = useRef(null);
+  const aboutHeadingRef = useRef(null);
+  const imgRef = useRef(null);
+  const paragraphRef = useRef(null);
+  const socialMediaRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const img = imgRef.current;
+    const aboutHeading = aboutHeadingRef.current;
+    const aboutSection = aboutSectionRef.current;
+    const paragraph = paragraphRef.current;
+    const socialMedia = socialMediaRef.current;
+
+    let ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        defaults: { duration: 1 },
+        scrollTrigger: {
+          trigger: aboutSection,
+          scrub: 1,
+          start: '0 80%',
+          end: 'bottom 100%',
+        },
+      });
+      tl.from(aboutHeading, { ease: 'power0.out', y: 100 });
+      tl.from(img, { ease: 'power0.out', y: 100 });
+      tl.from(paragraph, { ease: 'power0.out', y: 100, opacity: 0 });
+      tl.from(socialMedia, { ease: 'power0.out', y: 100, opacity: 0 });
+    });
+    return () => ctx.revert();
+  }, []);
   return (
-    <section className='bg-zinc-300'>
+    <section
+      className='bg-zinc-300 text-slate-800 dark:bg-neutral-900 dark:text-slate-300'
+      ref={aboutSectionRef}
+    >
       <div className='container mx-auto px-4 py-16 md:py-32'>
-        <h2 className='text-3xl text-slate-800'>About me</h2>
+        <h2 className='text-3xl' ref={aboutHeadingRef}>
+          About me
+        </h2>
         <div className='mt-10 flex flex-col items-center gap-6 lg:flex-row lg:justify-between lg:gap-20'>
-          <div className=' w-full shadow-2xl lg:w-3/5 xl:w-auto'>
+          <div className=' w-full shadow-2xl lg:w-3/5 xl:w-auto' ref={imgRef}>
             <Image src={MixingImg} className='w-full' alt='dj mixing' />
           </div>
 
-          <p className='text-slate-800 lg:w-fit'>
+          <p className='lg:w-fit' ref={paragraphRef}>
             My name is Adrian Andrea, and I'm a DJ with a passion for music and a love for
             entertaining. Ever since I was young, I've been fascinated by the power of
             music to bring people together and create unforgettable experiences. From
@@ -35,7 +77,7 @@ export default function AboutSection() {
             you on the dancefloor!
           </p>
         </div>
-        <div className='mt-10'>
+        <div className='mt-10' ref={socialMediaRef}>
           <SocialMediaIcons />
         </div>
       </div>
