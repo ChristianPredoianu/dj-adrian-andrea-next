@@ -65,13 +65,8 @@ export default function HeroSection() {
             />
           </div>
         </section>
-        <div className='absolute bottom-0 right-0 z-40 w-2/5 md:w-3/12'>
-          <Image
-            src={ProfileImg}
-            className='w-full'
-            alt='dj adrian andrea'
-            ref={profileImgRef}
-          />
+        <div className='absolute bottom-0 right-0 z-40 w-2/6 md:w-3/12'>
+          <Image src={ProfileImg} alt='dj adrian andrea' ref={profileImgRef} />
         </div>
       </div>
     </>
