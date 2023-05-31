@@ -6,9 +6,7 @@ interface PlayerContextProviderProps {
   children: React.ReactNode;
 }
 
-export const PlayerContextProvider: React.FC<PlayerContextProviderProps> = ({
-  children,
-}) => {
+export function PlayerContextProvider({ children }: PlayerContextProviderProps) {
   const [activePlayerId, setActivePlayerId] = useState<number | null>(null);
 
   const handleSetActivePlayerId = useCallback((id: number | null) => {
@@ -21,4 +19,4 @@ export const PlayerContextProvider: React.FC<PlayerContextProviderProps> = ({
   };
 
   return <PlayerContext.Provider value={contextValue}>{children}</PlayerContext.Provider>;
-};
+}
