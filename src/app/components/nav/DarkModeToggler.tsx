@@ -3,9 +3,9 @@ import useDarkMode from '@/app/hooks/useDarkMode';
 export default function DarkModeToggler() {
   const { isDarkMode, setIsDarkMode } = useDarkMode();
 
-  const handleToggleDarkMode = () => {
+  function handleToggleDarkMode() {
     setIsDarkMode((prevMode) => !prevMode);
-  };
+  }
 
   return (
     <div className='flex flex-col items-center gap-2 sm:flex-row'>
