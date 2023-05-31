@@ -1,6 +1,6 @@
 import { forwardRef, useContext } from 'react';
 import Image from 'next/image';
-import { PlayerContext } from '@/app/store/PlayerContext';
+import { PlayerContext } from '@/app/store/playerContext';
 import SingleTrackPlayer from '@/app/components/audio/SingleTrackPlayer';
 
 interface TrackCardProps {

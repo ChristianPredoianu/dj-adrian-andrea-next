@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useContext, useRef, useLayoutEffect } from 'react';
-import { PlayerContext } from '@/app/store/PlayerContext';
+import { PlayerContext } from '@/app/store/playerContext';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import ProfileImg from '@/app/assets/images/adrian-andrea.png';
