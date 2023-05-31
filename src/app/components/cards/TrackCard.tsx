@@ -25,7 +25,7 @@ export default forwardRef<HTMLElement, TrackCardProps>(function TrackCard(
       className='card flex w-4/5 flex-col bg-slate-950 sm:w-3/5 lg:w-2/5 2xl:flex-row'
       ref={ref}
     >
-      <div className='relative h-80 w-full object-cover 2xl:h-auto '>
+      <div className='relative h-52 w-full object-cover 2xl:h-auto '>
         <Image
           src={track.img}
           fill
