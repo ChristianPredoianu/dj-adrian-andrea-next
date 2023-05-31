@@ -7,8 +7,10 @@ export default function useDarkMode() {
 
   useEffect(() => {
     // Check the initial theme preference
+    const storedTheme = localStorage.getItem('theme');
     const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setIsDarkMode(prefersDarkMode);
+
+    setIsDarkMode(storedTheme === 'dark' || (storedTheme === null && prefersDarkMode));
 
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
