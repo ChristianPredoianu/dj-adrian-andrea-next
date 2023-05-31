@@ -1,6 +1,6 @@
 'use client';
 
-import { PlayerContextProvider } from '@/app/store/PlayerContext';
+import { PlayerContextProvider } from '@/app/store/playerContextProvider';
 import './globals.css';
 import { Poppins } from 'next/font/google';
 import Nav from './components/nav/Nav';
