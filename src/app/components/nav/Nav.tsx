@@ -7,12 +7,7 @@ import NavLink from '@/app/components/nav/NavLink';
 import DarkModeToogler from '@/app/components/nav/DarkModeToggler';
 import SocialMediaIcons from '@/app/components/ui/SocialMediaIcons';
 
-const navLinksArr = [
-  { name: 'Home' },
-  { name: 'About' },
-  { name: 'Tracks' },
-  { name: 'Soundcloud' },
-];
+const navLinksArr = [{ name: 'About' }, { name: 'Tracks' }, { name: 'Soundcloud' }];
 
 export default function Nav() {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);

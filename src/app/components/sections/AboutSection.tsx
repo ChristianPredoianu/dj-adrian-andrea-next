@@ -19,26 +19,20 @@ export default function AboutSection() {
   useLayoutEffect(() => {
     let mm = gsap.matchMedia();
 
-    const aboutHeading = aboutHeadingRef.current;
-    const aboutSection = aboutSectionRef.current;
-    const img = imgRef.current;
-    const paragraph = paragraphRef.current;
-    const socialMedia = socialMediaRef.current;
-
     mm.add('(min-width: 1024px)', () => {
       const tl = gsap.timeline({
         defaults: { duration: 1 },
         scrollTrigger: {
-          trigger: aboutSection,
+          trigger: aboutSectionRef.current,
           scrub: 1,
           start: '0 80%',
           end: 'bottom 100%',
         },
       });
-      tl.from(aboutHeading, { ease: 'power0.out', y: 100 });
-      tl.from(img, { ease: 'power0.out', y: 100 });
-      tl.from(paragraph, { ease: 'power0.out', y: 100, opacity: 0 });
-      tl.from(socialMedia, { ease: 'power0.out', y: 100, opacity: 0 });
+      tl.from(aboutHeadingRef.current, { ease: 'power0.out', y: 100 });
+      tl.from(imgRef.current, { ease: 'power0.out', y: 100 });
+      tl.from(paragraphRef.current, { ease: 'power0.out', y: 100, opacity: 0 });
+      tl.from(socialMediaRef.current, { ease: 'power0.out', y: 100, opacity: 0 });
     });
     return () => mm.revert();
   }, []);

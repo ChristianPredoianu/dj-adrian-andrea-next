@@ -57,7 +57,7 @@ export default function HeroSection() {
               <CtaBtn />
             </Link>
           </div>
-          <div>
+          <div className='pb-2'>
             <p className='text-xs font-bold'>View All Tracks</p>
             <SingleTrackPlayer
               track={heroTrack}

@@ -9,14 +9,30 @@ export default function Footer() {
           <NavLogo isNav={false} />
           <SocialMediaIcons />
         </div>
-        <div className='mt-6 flex flex-col items-center gap-4 md:flex-row md:justify-between'>
-          <div className='flex flex-col gap-1  text-center text-xs text-gray-600'>
+        <div className='mt-6 flex flex-col items-center md:flex-row md:justify-between'>
+          <div className='text-center text-xs text-gray-600'>
             <p>Credits:</p>
-            <p className='cursor-pointer'>WaveSurfer.js</p>
+            <a
+              href='https://wavesurfer-js.org/'
+              rel='noopener noreferrer nofollow'
+              target='_blank'
+            >
+              <p className='transition-duration: 150ms mt-1 cursor-pointer transition-colors hover:text-red-800'>
+                WaveSurfer.js
+              </p>
+            </a>
           </div>
           <div className='text-center text-xs text-gray-600'>
             <p>Copyright &copy;</p>
-            <p className='cursor-pointer'>Christian Predoianu</p>
+            <a
+              href='https://github.com/ChristianPredoianu'
+              rel='noopener noreferrer nofollow'
+              target='_blank'
+            >
+              <p className='transition-duration: 150ms mt-1 cursor-pointer transition-colors hover:text-red-800'>
+                Christian Predoianu
+              </p>
+            </a>
           </div>
         </div>
       </div>

@@ -1,8 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import AudioVisualizer from '@/app/components/audio/AudioVisualizer';
+import dynamic from 'next/dynamic';
 import classNames from 'classnames';
+
+const AudioVisualizer = dynamic(() => import('@/app/components/audio/AudioVisualizer'), {
+  ssr: false,
+});
 
 interface SingleTrackPlayerProps {
   track: {
