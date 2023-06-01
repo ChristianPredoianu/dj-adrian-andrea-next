@@ -25,7 +25,7 @@ export default function DarkModeToggler() {
           <div className='h-6 w-12 rounded-full bg-slate-300'>
             <div
               className={`h-6 w-6 rounded-full transition-transform duration-300 ${
-                isDarkMode ? 'translate-x-6 transform   bg-red-800' : 'bg-white'
+                isDarkMode ? 'translate-x-6 transform  bg-red-600' : 'bg-slate-500'
               }`}
             ></div>
           </div>
