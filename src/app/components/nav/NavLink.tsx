@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 interface NavLinkProps {
   link: {
     name: string;
@@ -8,10 +10,12 @@ interface NavLinkProps {
 export default function NavLinks({ link, onCloseNavbar }: NavLinkProps) {
   return (
     <li
-      className='text-md transition-duration: 150ms z-50 flex cursor-pointer items-center px-3 py-4 uppercase leading-snug tracking-widest text-white  transition-colors hover:text-red-800 xl:text-xl '
+      className='text-md transition-duration: 150ms z-50 flex cursor-pointer items-center px-3 py-4 uppercase leading-snug tracking-widest text-font-light transition-colors hover:text-red-600 xl:text-xl'
       onClick={onCloseNavbar}
     >
-      {link.name}
+      <Link href={`#${link.name.toLowerCase()}`} scroll={false}>
+        {link.name}
+      </Link>
     </li>
   );
 }
