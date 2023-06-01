@@ -7,7 +7,12 @@ import NavLink from '@/app/components/nav/NavLink';
 import DarkModeToogler from '@/app/components/nav/DarkModeToggler';
 import SocialMediaIcons from '@/app/components/ui/SocialMediaIcons';
 
-const navLinksArr = [{ name: 'Home' }, { name: 'About' }, { name: 'Tracks' }];
+const navLinksArr = [
+  { name: 'Home' },
+  { name: 'About' },
+  { name: 'Tracks' },
+  { name: 'Soundcloud' },
+];
 
 export default function Nav() {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
@@ -28,7 +33,7 @@ export default function Nav() {
     <>
       <header className='container absolute left-0 right-0 z-50 m-auto w-full px-4 py-4 lg:py-0'>
         <nav className='relative flex flex-wrap items-center justify-between'>
-          <NavLogo />
+          <NavLogo isNav={true} />
 
           <div className='xl:-ml-72'>
             <DarkModeToogler />
