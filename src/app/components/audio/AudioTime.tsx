@@ -1,11 +1,18 @@
 import { useCalculateTime } from '@/app/hooks/useCalculateTime';
 
 interface AudioTimeProps {
-  time: number;
+  currentTime: number;
+  duration: number;
 }
 
-export default function AudioTime({ time }: AudioTimeProps) {
+export default function AudioTime({ currentTime, duration }: AudioTimeProps) {
   const { calculateTime } = useCalculateTime();
 
-  return <span className='text-xs'>{calculateTime(time)}</span>;
+  return (
+    <div className='flex text-xs'>
+      <p>{calculateTime(currentTime)}</p>
+      <span className='ml-2 mr-2'>/</span>
+      <p>{calculateTime(duration)}</p>
+    </div>
+  );
 }
