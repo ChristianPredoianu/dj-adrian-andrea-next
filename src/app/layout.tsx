@@ -3,9 +3,10 @@
 import { PlayerContextProvider } from '@/app/store/playerContextProvider';
 import './globals.css';
 import { Poppins } from 'next/font/google';
-import Nav from './components/nav/Nav';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
+import Nav from '@/app/components/nav/Nav';
+import Footer from '@/app/components/footer/Footer';
 config.autoAddCss = false;
 
 const poppins = Poppins({
@@ -25,6 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <PlayerContextProvider>
           <Nav />
           {children}
+          <Footer />
         </PlayerContextProvider>
       </body>
     </html>
