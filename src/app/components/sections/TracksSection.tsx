@@ -14,39 +14,49 @@ export default function TracksSections() {
   const headingRef = useRef(null);
 
   useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      let cards = gsap.utils.selector(sectionRef);
-      const heading = headingRef.current;
+    let mm = gsap.matchMedia();
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          scrub: 1,
-          start: '0 80%',
-          end: 'bottom 100%',
-        },
-      });
+    mm.add(
+      '(min-width: 1024px)',
+      () => {
+        let cards = gsap.utils.selector(sectionRef);
+        const heading = headingRef.current;
 
-      tl.from(heading, { ease: 'power0.out', y: 100 });
-      tl.from(cards('.card'), {
-        stagger: 3,
-        duration: 3,
-        opacity: 0.5,
-        y: 20,
-        scale: 0.9,
-        ease: 'power0',
-      });
-    }, sectionRef);
-    return () => ctx.revert();
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            scrub: 1,
+            start: '0 80%',
+            end: 'bottom 100%',
+          },
+        });
+
+        tl.from(heading, { ease: 'power0.out', y: 100 });
+        tl.from(cards('.card'), {
+          stagger: 3,
+          duration: 3,
+          opacity: 0.5,
+          y: 20,
+          scale: 0.9,
+          ease: 'power0',
+        });
+      },
+      sectionRef
+    );
+    return () => mm.revert();
   }, []);
 
   const tracks = tracksArr.map((track) => <TrackCard key={track.id} track={track} />);
 
   return (
-    <section className='bg-zinc-200 text-slate-200 dark:bg-stone-950' ref={sectionRef}>
+    <section
+      className='text-light bg-secondary-color dark:bg-secondary-color-dark'
+      ref={sectionRef}
+      id='tracks'
+    >
       <div className='container mx-auto px-4 py-16 md:py-32'>
         <h3
-          className='mb-10 text-3xl text-slate-800 dark:text-slate-300'
+          className='mb-10 text-3xl text-font-dark dark:text-font-light'
           ref={headingRef}
         >
           Tracks
