@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import AudioVisualizer from '@/app/components/audio/audio-visualizer/AudioVisualizer';
+import AudioVisualizer from '@/app/components/audio/AudioVisualizer';
 import classNames from 'classnames';
 
 interface SingleTrackPlayerProps {
@@ -36,7 +36,7 @@ export default function SingleTrackPlayer({
         })}
       ></div>
       <div
-        className={classNames('mt-6 w-full md:w-3/4', {
+        className={classNames('w-full md:w-3/4', {
           'w-full md:w-full': isTracksSection,
         })}
       >
