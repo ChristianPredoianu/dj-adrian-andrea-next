@@ -14,7 +14,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: 'Dj Adrian Andrea',
+  title: 'DJ Adrian Andrea',
   description:
     'Introducing the ultimate music experience, brought to you by the one and only DJ Adrian Andrea.',
 };
