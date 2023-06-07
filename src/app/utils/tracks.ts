@@ -13,7 +13,7 @@ export const tracksArr: ITracksArr[] = [
     id: 1,
     artist: 'Ddp',
     track: 'Summer Nights',
-    url: 'https://drive.google.com/uc?export=download&id=" + 1T3LQAdFV8ggElAm_VUAiNVjp1GHD8z8p',
+    url: 'https://drive.google.com/open?id=" + 1T3LQAdFV8ggElAm_VUAiNVjp1GHD8z8p',
     img: '/dj1.jpg',
     alt: 'dj mixing croud watching',
   },
