@@ -13,7 +13,7 @@ export const tracksArr: ITracksArr[] = [
     id: 1,
     artist: 'Ddp',
     track: 'Summer Nights',
-    url: 'https://drive.google.com/open?id=" + 1T3LQAdFV8ggElAm_VUAiNVjp1GHD8z8p',
+    url: 'https://storage.googleapis.com/adrian_andrea_music/Adrian%20Andrea%20-%20Bungibum%20(Original%20Mix)%20MASTERED%20%5BAM%5D.mp3',
     img: '/dj1.jpg',
     alt: 'dj mixing croud watching',
   },
