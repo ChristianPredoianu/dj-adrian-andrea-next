@@ -1,14 +1,18 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
-import { useCalculateTime } from '@/app/hooks/useCalculateTime';
 import WaveSurfer from 'wavesurfer.js';
+import LoadingSpinner from '@/app/components/ui/LoadingSpinner';
 import AudioControls from '@/app/components/audio/AudioControls';
 import AudioTime from '@/app/components/audio/AudioTime';
 import classNames from 'classnames';
 
 interface AudioVisualizerProps {
-  track: string;
+  track: {
+    url: string;
+    track: string;
+    artist: string;
+  };
   isPlaying: boolean;
   isTracksSection: boolean;
   activePlayerHandler: () => void;
@@ -24,9 +28,7 @@ export default function AudioVisualizer({
 }: AudioVisualizerProps) {
   const [currentTime, setCurrentTime] = useState<number>(0);
   const [duration, setDuration] = useState<number>(0);
-  const [isDurationLoaded, setIsDurationLoaded] = useState<boolean>(false);
-
-  const { calculateTime } = useCalculateTime();
+  const [isAudioLoaded, setIsAudioLoaded] = useState<boolean>(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const waveSurferRef = useRef<WaveSurfer | null>(null);
@@ -80,12 +82,11 @@ export default function AudioVisualizer({
 
       waveSurferRef.current = waveSurfer;
 
-      waveSurfer.load(track);
+      waveSurfer.load(track.url);
 
       waveSurfer.on('ready', () => {
-        waveSurferRef.current = waveSurfer;
+        setIsAudioLoaded(true);
         setDuration(waveSurfer.getDuration());
-        setIsDurationLoaded(true);
       });
 
       waveSurfer.on('click', () => {
@@ -104,14 +105,18 @@ export default function AudioVisualizer({
 
   return (
     <>
-      <AudioControls
-        isPlaying={isPlaying}
-        isTracksSection={isTracksSection}
-        handlePlay={handlePlay}
-        handlePause={handlePause}
-      />
+      {!isAudioLoaded && <LoadingSpinner />}
+      {isAudioLoaded && (
+        <AudioControls
+          track={track}
+          isPlaying={isPlaying}
+          isTracksSection={isTracksSection}
+          handlePlay={handlePlay}
+          handlePause={handlePause}
+        />
+      )}
       <div ref={containerRef}></div>
-      {isDurationLoaded && (
+      {isAudioLoaded && (
         <div className={classNames('mt-2', { 'ml-2 mt-4': isTracksSection })}>
           <AudioTime currentTime={currentTime} duration={duration} />
         </div>
