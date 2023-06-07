@@ -22,14 +22,14 @@ export default function Footer() {
               </p>
             </a>
           </div>
-          <div className='text-center text-xs text-gray-600'>
+          <div className='mt-1 text-center text-xs text-gray-600'>
             <p>Copyright &copy;</p>
             <a
               href='https://github.com/ChristianPredoianu'
               rel='noopener noreferrer nofollow'
               target='_blank'
             >
-              <p className='transition-duration: 150ms mt-1 cursor-pointer transition-colors hover:text-red-800'>
+              <p className='transition-duration: 150ms mt-1 cursor-pointer transition-colors hover:text-red-800 md:mt-0'>
                 Christian Predoianu
               </p>
             </a>
