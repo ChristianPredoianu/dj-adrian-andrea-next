@@ -6,12 +6,14 @@ interface ITracksArr {
   img: string;
   alt: string;
 }
+
+/* https://drive.google.com/file/d/1T3LQAdFV8ggElAm_VUAiNVjp1GHD8z8p/view?usp=drive_link */
 export const tracksArr: ITracksArr[] = [
   {
     id: 1,
     artist: 'Ddp',
     track: 'Summer Nights',
-    url: '/avex.mp3',
+    url: 'https://drive.google.com/uc?export=download&id=" + 1T3LQAdFV8ggElAm_VUAiNVjp1GHD8z8p',
     img: '/dj1.jpg',
     alt: 'dj mixing croud watching',
   },
