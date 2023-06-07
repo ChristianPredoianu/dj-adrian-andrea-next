@@ -78,6 +78,9 @@ export default function AudioVisualizer({
         responsive: true,
         waveColor: gradientRef.current,
         cursorColor: 'transparent',
+        xhr: {
+          mode: 'no-cors',
+        },
       });
 
       waveSurferRef.current = waveSurfer;
