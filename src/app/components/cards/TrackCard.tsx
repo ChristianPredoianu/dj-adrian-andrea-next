@@ -22,7 +22,7 @@ export default forwardRef<HTMLElement, TrackCardProps>(function TrackCard(
 
   return (
     <article
-      className='card flex w-full flex-col bg-slate-950 text-font-light sm:w-3/5 lg:w-2/5 2xl:flex-row'
+      className='card flex w-full flex-col bg-slate-950 text-font-light sm:w-3/5 lg:w-2/5 lg:last:mx-auto 2xl:flex-row'
       ref={ref}
     >
       <div className='relative h-40 w-full object-cover 2xl:h-auto '>
