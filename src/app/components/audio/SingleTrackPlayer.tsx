@@ -44,20 +44,13 @@ export default function SingleTrackPlayer({
           'w-full md:w-full': isTracksSection,
         })}
       >
-        <div className='relative mt-6'>
-          <div className='absolute -top-2 left-8 mt-4'>
-            {!isTracksSection && track && (
-              <p className='ml-4 text-xs'>{`${track.track} -${track.artist}`}</p>
-            )}
-          </div>
-          <AudioVisualizer
-            track={track.url}
-            isPlaying={isPlaying}
-            setIsPlaying={setIsPlaying}
-            activePlayerHandler={activePlayerHandler}
-            isTracksSection={isTracksSection}
-          />
-        </div>
+        <AudioVisualizer
+          track={track}
+          isPlaying={isPlaying}
+          setIsPlaying={setIsPlaying}
+          activePlayerHandler={activePlayerHandler}
+          isTracksSection={isTracksSection}
+        />
       </div>
     </>
   );
