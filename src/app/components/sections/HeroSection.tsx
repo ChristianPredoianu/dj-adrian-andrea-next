@@ -32,10 +32,11 @@ export default function HeroSection() {
   }, []);
 
   const heroTrack = {
-    url: 'https://storage.googleapis.com/adi_music/Adrian%20Andrea%20-%20Bungibum%20(Original%20Mix)%20MASTERED%20%5BAM%5D.mp3',
+    url: 'https://storage.googleapis.com/adi_music/Adrian%20Andrea%20-%20Bunker%20(Original%20Mix-M5).mp3',
     track: 'Bunker (Original Mix)',
     artist: 'Adrian Andrea',
   };
+
   return (
     <>
       <div
