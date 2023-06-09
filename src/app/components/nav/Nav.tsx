@@ -29,7 +29,6 @@ export default function Nav() {
       <header className='container absolute left-0 right-0 z-50 m-auto w-full px-4 py-4 lg:py-0'>
         <nav className='relative flex flex-wrap items-center justify-between'>
           <NavLogo isNav={true} />
-
           <div className='xl:-ml-72'>
             <DarkModeToogler />
           </div>
@@ -42,7 +41,6 @@ export default function Nav() {
               {navLinks}
             </ul>
           </div>
-
           <div className='hidden lg:flex'>
             <SocialMediaIcons />
           </div>
