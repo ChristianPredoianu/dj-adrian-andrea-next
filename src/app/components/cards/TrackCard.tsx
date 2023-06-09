@@ -29,6 +29,7 @@ export default forwardRef<HTMLElement, TrackCardProps>(function TrackCard(
         <Image
           src={track.img}
           fill
+          quality={30}
           alt={track.alt}
           sizes='(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw'
           className='relative object-cover'
