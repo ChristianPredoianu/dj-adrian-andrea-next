@@ -11,6 +11,7 @@ export default function SocialMediaIcons() {
     <div className=' flex gap-4 text-2xl text-red-800'>
       <a
         href='https://soundcloud.com/adrianandrea'
+        aria-label='link to dj:s soundcloud'
         rel='noopener noreferrer nofollow'
         target='_blank'
       >
@@ -21,6 +22,7 @@ export default function SocialMediaIcons() {
       </a>
       <a
         href='https://instagram.com/djadrianandrea/'
+        aria-label='link to dj:s instagram'
         rel='noopener noreferrer nofollow'
         target='_blank'
       >
@@ -31,6 +33,7 @@ export default function SocialMediaIcons() {
       </a>
       <a
         href='https://www.facebook.com/djadrianandrea'
+        aria-label='link to dj:s facebook'
         rel='noopener noreferrer nofollow'
         target='_blank'
       >

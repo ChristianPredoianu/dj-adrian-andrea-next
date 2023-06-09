@@ -4,7 +4,7 @@ import SocialMediaIcons from '@/app/components/ui/SocialMediaIcons';
 export default function Footer() {
   const credits = (
     <div className='mt-6 flex flex-col items-center md:flex-row md:justify-between'>
-      <div className='text-center text-xs text-gray-600'>
+      <div className='text-center text-xs text-gray-400'>
         <p>Credits:</p>
         <a
           href='https://wavesurfer-js.org/'
@@ -17,7 +17,7 @@ export default function Footer() {
           </p>
         </a>
       </div>
-      <div className='mt-1 text-center text-xs text-gray-600'>
+      <div className='mt-1 text-center text-xs text-gray-400'>
         <p>Copyright &copy;</p>
         <a
           href='https://github.com/ChristianPredoianu'
