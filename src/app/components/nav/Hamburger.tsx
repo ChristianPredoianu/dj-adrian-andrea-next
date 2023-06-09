@@ -16,6 +16,7 @@ export default function Hamburger({ isNavbarOpen, onToggleNavbar }: HamburgerPro
           { 'fixed right-4 top-6': isNavbarOpen }
         )}
         type='button'
+        aria-label='mobile navigation'
         onClick={onToggleNavbar}
       >
         <div

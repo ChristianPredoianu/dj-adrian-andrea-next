@@ -8,6 +8,7 @@ export default function Footer() {
         <p>Credits:</p>
         <a
           href='https://wavesurfer-js.org/'
+          aria-label='link to wavesurfer.js'
           rel='noopener noreferrer nofollow'
           target='_blank'
         >
@@ -20,6 +21,7 @@ export default function Footer() {
         <p>Copyright &copy;</p>
         <a
           href='https://github.com/ChristianPredoianu'
+          aria-label='link to author'
           rel='noopener noreferrer nofollow'
           target='_blank'
         >
