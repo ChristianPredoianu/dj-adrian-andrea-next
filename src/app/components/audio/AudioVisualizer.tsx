@@ -49,15 +49,6 @@ export default function AudioVisualizer({
     }
   }, []);
 
-  function handlePlay() {
-    activePlayerHandler();
-    setIsPlaying(true);
-  }
-
-  function handlePause() {
-    setIsPlaying(false);
-  }
-
   useEffect(() => {
     if (containerRef.current && gradientRef.current) {
       const waveSurfer = WaveSurfer.create({
@@ -72,8 +63,6 @@ export default function AudioVisualizer({
         waveColor: gradientRef.current,
         cursorColor: 'transparent',
       });
-
-      waveSurferRef.current = waveSurfer;
 
       waveSurfer.load(track.url);
 
@@ -90,11 +79,13 @@ export default function AudioVisualizer({
         setCurrentTime(waveSurfer.getCurrentTime());
       });
 
+      waveSurferRef.current = waveSurfer;
+
       return () => {
         waveSurfer.destroy();
       };
     }
-  }, [track, gradientRef]);
+  }, [track.url]);
 
   useEffect(() => {
     if (isPlaying && waveSurferRef.current) {
@@ -103,6 +94,15 @@ export default function AudioVisualizer({
       waveSurferRef.current.pause();
     }
   }, [isPlaying]);
+
+  function handlePlay() {
+    setIsPlaying(true);
+    activePlayerHandler();
+  }
+
+  function handlePause() {
+    setIsPlaying(false);
+  }
 
   return (
     <>
