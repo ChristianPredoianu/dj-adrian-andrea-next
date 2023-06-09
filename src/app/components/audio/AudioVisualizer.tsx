@@ -59,28 +59,18 @@ export default function AudioVisualizer({
   }
 
   useEffect(() => {
-    if (isPlaying && waveSurferRef.current) {
-      waveSurferRef.current.play();
-    } else if (!isPlaying && waveSurferRef.current) {
-      waveSurferRef.current.pause();
-    }
-  }, [isPlaying]);
-
-  useEffect(() => {
     if (containerRef.current && gradientRef.current) {
       const waveSurfer = WaveSurfer.create({
         container: containerRef.current,
         backend: 'WebAudio',
         height: 80,
-        barWidth: 3,
-        barGap: 3,
+        barWidth: 2,
+        barGap: 1,
+        barRadius: 2,
         progressColor: '#a6a9ad',
         responsive: true,
         waveColor: gradientRef.current,
         cursorColor: 'transparent',
-        xhr: {
-          mode: 'no-cors',
-        },
       });
 
       waveSurferRef.current = waveSurfer;
@@ -105,6 +95,14 @@ export default function AudioVisualizer({
       };
     }
   }, [track, gradientRef]);
+
+  useEffect(() => {
+    if (isPlaying && waveSurferRef.current) {
+      waveSurferRef.current.play();
+    } else if (!isPlaying && waveSurferRef.current) {
+      waveSurferRef.current.pause();
+    }
+  }, [isPlaying]);
 
   return (
     <>
