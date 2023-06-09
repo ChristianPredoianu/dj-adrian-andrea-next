@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
+
 import classNames from 'classnames';
 
 const AudioVisualizer = dynamic(() => import('@/app/components/audio/AudioVisualizer'), {
