@@ -59,7 +59,9 @@ export default function HeroSection() {
             </Link>
           </div>
           <div className='pb-2'>
-            <p className='text-xs font-bold'>View All Tracks</p>
+            <Link href={'#tracks'}>
+              <p className='text-xs font-bold'>View All Tracks</p>
+            </Link>
             <SingleTrackPlayer
               track={heroTrack}
               isTracksSection={false}
