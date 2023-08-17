@@ -12,7 +12,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
   <h3 align="center">Dj Adrian Andrea</h3>
    
   <p align="center">
-    <a href="https://github.com/ChristianPredoianu/food-app-vue"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/ChristianPredoianu/dj-adrian-andrea-next"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://dj-adrian-andrea-next-3q11.vercel.app/">View Demo</a>
