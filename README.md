@@ -1,4 +1,4 @@
-# Dj Adrian Andrea - Next js + Vite + TailwindCss 
+# Dj Adrian Andrea - Next js + Typescript + TailwindCss 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
  
@@ -58,7 +58,6 @@ Website made for Dj Adrian Andrea.
 
 * [Next.js](https://nextjs.org/)
 * [Typescript](https://www.typescriptlang.org/)
-* [Vite](https://vitejs.dev/)
 * [HTML5](https://developer.mozilla.org/en-US/docs/Glossary/HTML5)
 * [TailwindCss](https://tailwindcss.com/)
 * [GSAP](https://greensock.com/gsap/)
